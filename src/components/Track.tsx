@@ -1,10 +1,12 @@
 import React from 'react';
+import styles from '../css/Track.module.css';
 
 type Track = {
     id: string;
     name: string;
     artist: string;
     album: string;
+    image: string;
 };
 
 type TrackProps = {
@@ -24,38 +26,26 @@ const Track: React.FC<TrackProps> = ({ track, isRemoval = false, onAdd, onRemove
     };
 
     return (
-        <div
-            style={{
-                border: '1px solid #ddd',
-                borderRadius: '8px',
-                padding: '16px',
-                margin: '8px 0',
-                background: '#fff',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-            }}
-        >
-            <div>
-                <div style={{ fontWeight: 'bold', fontSize: '1.1rem' }}>{track.name}</div>
-                <div style={{ fontSize: '0.9rem', color: '#555' }}>
-                    {track.artist} | {track.album}
-                </div>
+        <div className={styles.card}>
+            <img
+            src={track.image}
+            alt={`${track.name} album cover`}
+            width={64}
+            height={64}
+            style={{ objectFit: 'cover', borderRadius: '4px', marginRight: '12px' }}
+            />
+            <div className={styles.cardContent}>
+            <div className={styles.title}>{track.name.length > 25 ? track.name.slice(0, 25) + '...' : track.name}</div>
+            <div className={styles.artist}>
+                {track.artist} | {track.album.length > 25 ? track.album.slice(0, 25) + '...' : track.album}
+            </div>
             </div>
             <button
-                onClick={handleClick}
-                style={{
-                    fontSize: '1.5rem',
-                    background: 'none',
-                    border: 'none',
-                    color: '#007bff',
-                    cursor: 'pointer',
-                    padding: '0 8px',
-                }}
-                aria-label={isRemoval ? 'Remove track' : 'Add track'}
+            onClick={handleClick}
+            aria-label={isRemoval ? 'Remove track' : 'Add track'}
+            className='track-action'
             >
-                {isRemoval ? '-' : '+'}
+            {isRemoval ? '-' : '+'}
             </button>
         </div>
     );
