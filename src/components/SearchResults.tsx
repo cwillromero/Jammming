@@ -6,6 +6,8 @@ type TrackType = {
     name: string;
     artist: string;
     album: string;
+    uri: any;
+    image: string;
 };
 
 type SearchResultsProps = {

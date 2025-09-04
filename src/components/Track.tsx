@@ -6,6 +6,7 @@ type Track = {
     name: string;
     artist: string;
     album: string;
+    uri: any;
     image: string;
 };
 
@@ -17,10 +18,12 @@ type TrackProps = {
 };
 
 const Track: React.FC<TrackProps> = ({ track, isRemoval = false, onAdd, onRemove }) => {
-    const handleClick = () => {
+    const handleClick = () => {        
         if (isRemoval) {
+            console.log('Removing track:', track);
             onRemove && onRemove(track);
         } else {
+            console.log('Adding track:', track);
             onAdd && onAdd(track);
         }
     };

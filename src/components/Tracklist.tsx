@@ -7,6 +7,8 @@ type TrackType = {
     name: string;
     artist: string;
     album: string;
+    uri: any;
+    image: string;
 };
 
 type TracklistProps = {
@@ -15,7 +17,7 @@ type TracklistProps = {
     onPlaylistNameChange: (name: string) => void;
     onAdd: (track: TrackType) => void;
     onRemove: (track: TrackType) => void;
-    onSave: (tracks: TrackType[]) => void;
+    onSave: () => void;
 };
 
 const Tracklist: React.FC<TracklistProps> = ({
