@@ -1,13 +1,12 @@
 import React from 'react';
 
 type SearchButtonProps = {
-    searchTerm: string;
-    onSearch: (searchTerm: string) => Promise<void>;
+    onSearch: () => Promise<void>;
 };
 
-const SearchButton: React.FC<SearchButtonProps> = ({ searchTerm, onSearch }) => {
+const SearchButton: React.FC<SearchButtonProps> = ({ onSearch }) => {
     const handleClick = () => {
-        onSearch(searchTerm);
+        onSearch();
     };
 
     return (
